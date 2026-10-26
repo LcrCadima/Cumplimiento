@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulación de Seguridad</title>
+ 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+ 
+body{
+background:#000;
+color:#00ff00;
+font-family:Consolas, Monaco, monospace;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+ 
+#terminal{
+width:90%;
+max-width:900px;
+height:80vh;
+border:2px solid #00ff00;
+padding:20px;
+overflow:hidden;
+box-shadow:0 0 20px #00ff00;
+}
+ 
+.line{
+animation:fadeIn 0.1s linear;
+}
+ 
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+ 
+.blink{
+animation:blink 0.7s infinite;
+}
+ 
+@keyframes blink{
+50%{opacity:0;}
+}
+ 
+.alert-screen{
+text-align:center;
+color:white;
+display:none;
+}
+ 
+.alert-screen h1{
+font-size:4rem;
+color:red;
+margin-bottom:20px;
+text-shadow:0 0 20px red;
+}
+ 
+.alert-screen h2{
+color:#ffcc00;
+margin-bottom:20px;
+}
+ 
+.alert-screen p{
+max-width:700px;
+margin:auto;
+line-height:1.6;
+font-size:1.2rem;
+}
+ 
+.warning{
+margin-top:30px;
+font-size:1.5rem;
+color:#00ff00;
+}
+ 
+@media(max-width:768px){
+ 
+.alert-screen h1{
+font-size:2.5rem;
+}
+ 
+.alert-screen p{
+font-size:1rem;
+}
+ 
+}
+</style>
+ 
+</head>
+<body>
+ 
+<div id="terminal"></div>
+ 
+<div id="alerta" class="alert-screen">
+ 
+<h1>⚠ ALERTA ESTAFA ⚠</h1>
+ 
+<h2>Esto fue una simulación de concientización</h2>
+ 
+<p>
+Durante los últimos segundos observaste una simulación diseñada para generar
+sensación de urgencia e incertidumbre.
+</p>
+ 
+<br>
+ 
+<p>
+Los delincuentes utilizan códigos QR, mensajes, correos electrónicos y sitios
+fraudulentos para engañar a las personas y obtener información confidencial.
+</p>
+ 
+<div class="warning">
+✅ Verifica siempre el origen del código QR.<br>
+✅ Revisa las direcciones web antes de ingresar datos.<br>
+✅ Nunca compartas credenciales ni códigos de verificación.<br>
+✅ Reporta cualquier actividad sospechosa.
+</div>
+ 
+</div>
+ 
+<script>
+ 
+const terminal = document.getElementById("terminal");
+ 
+const mensajes = [
+"> Inicializando conexión...",
+"> Detectando dispositivo móvil...",
+"> Estableciendo canal seguro...",
+"> Escaneando aplicaciones instaladas...",
+"> Verificando credenciales...",
+"> Accediendo a almacenamiento...",
+"> Analizando actividad financiera...",
+"> Sincronizando información...",
+"> Descargando registros...",
+"> Procesando datos..."
+];
+ 
+let contador = 0;
+ 
+function agregarLinea() {
+ 
+const linea = document.createElement("div");
+linea.className = "line";
+ 
+let porcentaje = Math.floor(Math.random() * 100);
+ 
+linea.innerHTML =
+mensajes[Math.floor(Math.random() * mensajes.length)] +
+" [" + porcentaje + "%]";
+ 
+terminal.appendChild(linea);
+ 
+terminal.scrollTop = terminal.scrollHeight;
+ 
+contador++;
+ 
+if (contador > 25) {
+clearInterval(animacion);
+}
+}
+ 
+const animacion = setInterval(agregarLinea, 120);
+ 
+setTimeout(() => {
+ 
+terminal.style.display = "none";
+document.getElementById("alerta").style.display = "block";
+ 
+document.body.style.background =
+"linear-gradient(135deg,#000,#1a0000,#000)";
+ 
+}, 3000);
+ 
+</script>
+ 
+</body>
+</html>
